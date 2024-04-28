@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "ReaderGrpcClient";
+
+package filereader;
+
+// The FileReader service definition.
+service FileReader {
+
+  // Sends file read  request
+  rpc GetFileBytes (GetFileBytesRequest) returns (stream GetFileBytesResponse);
+}
+
+// The request message containing the filepath.
+message GetFileBytesRequest {
+  string input_string = 1;
+}
+
+// The response message containing the chunks of filedata.
+message GetFileBytesResponse {
+  bytes data = 1;
+}
